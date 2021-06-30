@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven
+    }
     stages {
         stage('checkout') {
             steps {
@@ -10,7 +13,7 @@ pipeline {
         stage('build') {
             steps {
                 echo 'building...'
-                mvn package
+                sh "mvn package"
             }
         }
         post {
