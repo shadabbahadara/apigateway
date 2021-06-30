@@ -13,12 +13,13 @@ pipeline {
                 mvn package
             }
         }
-    post {
+        post {
         success {
             echo 'success message...'
         }
         failure {
             echo 'failure message...'
+        }
         }
     }
 }
