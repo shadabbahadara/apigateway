@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven
+        maven 'mavenGTC'
     }
     stages {
         stage('checkout') {
@@ -16,13 +16,13 @@ pipeline {
                 sh "mvn package"
             }
         }
-        post {
+    }
+    post {
         success {
             echo 'success message...'
         }
         failure {
             echo 'failure message...'
-        }
         }
     }
 }
