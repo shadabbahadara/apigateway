@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         dockerImage = ''
-        registry = 'localhost:5000/apigateway:tag1'
+        registry = 'localhost:5000/apigateway'
     }
     stages {
         stage('checkout') {
