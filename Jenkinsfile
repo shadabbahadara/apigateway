@@ -8,6 +8,7 @@ pipeline {
             steps {
                 echo 'checking out...'
                 git credentialsId: 'github', url: 'https://github.com/shadabbahadara/apigateway.git'
+                echo 'checked out...'
             }
         }
         stage('build') {
