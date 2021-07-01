@@ -3,6 +3,10 @@ pipeline {
     tools {
         maven 'mavenGTC'
     }
+    environment {
+        dockerImage = ''
+        registry = 'localhost:5000/apigateway:tag1'
+    }
     stages {
         stage('checkout') {
             steps {
@@ -15,6 +19,22 @@ pipeline {
             steps {
                 echo 'building...'
                 sh "mvn package"
+            }
+        }
+        stage('build docker image') {
+            steps {
+                echo 'building docker image...'
+                script {
+                    dockerImage = docker.build registry
+                }
+            }
+        }
+        stage('push docker image') {
+            steps {
+                echo 'pushing docker image to docker registry...'
+                script {
+                    dockerImage.push()
+                }
             }
         }
     }
